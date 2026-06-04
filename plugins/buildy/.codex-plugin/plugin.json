@@ -9,12 +9,7 @@
   "homepage": "https://buildy.so/start.md",
   "repository": "https://github.com/tambo-labs/buildy-codex-plugin",
   "license": "MIT",
-  "keywords": [
-    "buildy",
-    "mcp",
-    "web-apps",
-    "developer-tools"
-  ],
+  "keywords": ["buildy", "mcp", "web-apps", "developer-tools"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
@@ -23,10 +18,7 @@
     "longDescription": "Buildy is an MCP server that generates, hosts, and updates small interactive web apps. Use this plugin to connect the Buildy MCP endpoint and follow the Buildy authoring workflow from Codex.",
     "developerName": "Tambo",
     "category": "Developer Tools",
-    "capabilities": [
-      "Interactive",
-      "Write"
-    ],
+    "capabilities": ["Interactive", "Write"],
     "websiteURL": "https://buildy.so/",
     "privacyPolicyURL": "https://buildy.so/privacy",
     "termsOfServiceURL": "https://buildy.so/terms",
