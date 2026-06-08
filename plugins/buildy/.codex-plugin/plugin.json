@@ -23,6 +23,8 @@
     "privacyPolicyURL": "https://buildy.so/privacy",
     "termsOfServiceURL": "https://buildy.so/terms",
     "brandColor": "#0F766E",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
     "defaultPrompt": [
       "Build me a personal web app with Buildy.",
       "Update my Buildy app from feedback.",
