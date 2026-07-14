@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "buildy",
+      "name": "charming",
       "source": {
         "source": "local",
-        "path": "./plugins/buildy"
+        "path": "./plugins/charming"
       },
       "policy": {
         "installation": "AVAILABLE",
