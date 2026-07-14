@@ -33,7 +33,7 @@ When Charming MCP tools are available, build with the tools directly. Do not use
 2. Read the design guide at [usecharming.com/design.md](https://usecharming.com/design.md) before writing UI code.
 3. Create the first version with `create_app({ module, ui, styles? })`.
 4. Give the user the returned app URL and `app_id`.
-5. If the host does not render the app inline, share the returned URL so the user can open it directly. Do not claim the app is visible inline unless the host actually rendered it.
+5. In Codex app sessions with a browser tool available, open the returned URL in Codex's in-app browser when MCP Apps inline UI does not visibly mount in the conversation. Do not claim the app is visible inline unless the host actually rendered it.
 6. Offer one concrete next iteration, then call `update_app` only after the user agrees.
 7. If the user hits a Charming limitation, call `submit_feedback({ app_id, text })` instead of silently working around it.
 
@@ -50,6 +50,13 @@ Generated app code must follow the Charming contract:
 ## HTTP fallback
 
 When Charming MCP tools are not available, follow [usecharming.com/start.md](https://usecharming.com/start.md) and then [usecharming.com/build-http.md](https://usecharming.com/build-http.md). Prefer MCP setup first if the user asked for a connector or if the client can install the MCP server.
+
+For Codex CLI MCP setup, the documented config is:
+
+```toml
+[mcp_servers.charming]
+url = "https://charm.ing/mcp"
+```
 
 ## Output expectations
 
