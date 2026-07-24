@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="plugins/charming/assets/logo-wink.svg" alt="Charming winking logo" width="160">
+  <img src="plugins/charming/assets/logo-animated.svg" alt="Charming animated logo" width="160">
 </p>
 
 <h1 align="center">Charming Codex Plugin</h1>
