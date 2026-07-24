@@ -1,4 +1,8 @@
-# Charming Codex Plugin
+<p align="center">
+  <img src="plugins/charming/assets/logo-animated.svg" alt="Charming animated logo" width="160">
+</p>
+
+<h1 align="center">Charming Codex Plugin</h1>
 
 Charming is an MCP server that generates, hosts, and updates small interactive web apps. This repository publishes the Charming Codex plugin as a public marketplace source.
 
