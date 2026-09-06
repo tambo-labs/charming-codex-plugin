@@ -27,13 +27,16 @@ Then restart Codex, open **Plugins**, choose **Tambo Labs**, install **Charming*
 When installed, ask Codex to create or update a Charming app. Codex should use the Charming MCP tools directly:
 
 - `create_app`
+- `read_docs`
 - `update_app`
 - `list_apps`
 - `get_app`
 - `get_app_source`
 - `submit_feedback`
 
-For the full app authoring guide, see <https://usecharming.com/start.md>.
+The agent can read the docs through the same MCP connection: `read_docs({})` returns the index, and `read_docs({ path: "build-mcp.md" })` reads the starter guide without a browser. Long pages return `next_offset`; pass it as `offset` with the same path to continue.
+
+For the full app authoring guide, see <https://charm.ing/docs/llms-full.txt>.
 
 ## Publisher
 

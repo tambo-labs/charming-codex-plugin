@@ -9,12 +9,7 @@
   "homepage": "https://usecharming.com/start.md",
   "repository": "https://github.com/tambo-labs/charming-codex-plugin",
   "license": "MIT",
-  "keywords": [
-    "charming",
-    "mcp",
-    "web-apps",
-    "developer-tools"
-  ],
+  "keywords": ["charming", "mcp", "web-apps", "developer-tools"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
@@ -23,10 +18,7 @@
     "longDescription": "Charming is an MCP server that generates, hosts, and updates small interactive web apps. Each app gets a real URL, persistent storage, and inline rendering in MCP Apps-capable clients, and it stays live at that URL for anyone you share it with.",
     "developerName": "Tambo",
     "category": "Developer Tools",
-    "capabilities": [
-      "Interactive",
-      "Write"
-    ],
+    "capabilities": ["Interactive", "Write"],
     "websiteURL": "https://usecharming.com/",
     "privacyPolicyURL": "https://usecharming.com/privacy",
     "termsOfServiceURL": "https://usecharming.com/terms",
