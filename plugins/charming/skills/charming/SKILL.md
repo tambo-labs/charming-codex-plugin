@@ -55,7 +55,7 @@ Generated app code must follow the Charming contract:
 - To show an external image inside a Claude or ChatGPT embed, use `window.charming.images.load(url)`, which returns a `data:` URL. Both hosts inject a CSP that blocks a cross-origin `images.proxy(url)` URL.
 - Do not manage tokens in UI code; credentials attach automatically.
 - The `ui` program runs as a classic script, so no ESM syntax and no top-level `await`.
-- No Node APIs, no DOM APIs in the backend, no native form submit, and no `alert`, `confirm`, or `prompt` (they silently no-op in the sandboxed iframe). Outbound backend `fetch` is not banned; it is off until declared, see capabilities below.
+- No Node APIs, no DOM APIs in the backend, and no native form submit. Prefer inline UI to `alert`, `confirm`, and `prompt`: in chat embeds `confirm` and `prompt` return a Promise from Charming's dialog, while on the web they are the browser's own. On the web, pointer lock works for every app; fullscreen and a click-started `window.top.location` redirect need a claimed app. Outbound backend `fetch` is not banned; it is off until declared, see capabilities below.
 - Chat embeds block external UI scripts and CDN imports; on the web only, pinned scripts from cdnjs, unpkg, or jsDelivr load. Prefer inlining a UMD build if a library is truly needed.
 
 Declare only the capabilities the app uses in `manifest.capabilities.imports`; the host rejects strings it does not know, so never invent one:
