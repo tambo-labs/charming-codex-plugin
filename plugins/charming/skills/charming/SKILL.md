@@ -67,7 +67,7 @@ Declare only the capabilities the app uses in `manifest.capabilities.imports`; t
 | `charming:logging/emit@1.0` | `env.log` |
 | `charming:network/fetch@1.0` | plain backend `fetch`, claimed apps only |
 | `charming:secrets/fetch@1.0` | sealed `env.fetch` that substitutes `{{secret:NAME}}` into headers, claimed apps only |
-| `charming:browser/<name>@1.0` | a claim-gated browser permission such as camera or microphone |
+| `charming:browser/<name>@1.0` | a claim-gated sensor (`device-motion`, `ambient-light`) or web-only `storage`; camera, microphone, location, screen capture, clipboard reading, and MIDI need no import, and the viewer allows them per app |
 | `charming:app/<id>@x.y` | operations from another app |
 
 Two allowlists sit outside `capabilities`, both under `permissions`, and both take exact `https://host` origins:
