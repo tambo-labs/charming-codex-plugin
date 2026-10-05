@@ -50,7 +50,7 @@ Generated app code must follow the Charming contract:
   - `routes`: an array of operations. Each has `op` (unique), `method`, `path`, `title`, `description`, `inputSchema`, `outputSchema`, `annotations`, optional `public` and `examples`, and a `handler(input, { env, ctx, request })` that returns a JSON-compatible value. Set `annotations.readOnlyHint` to `true` on reads, or `query_app` and viewers cannot call them.
 - `ui` is one inline JavaScript program that populates `#app` and calls the backend through `window.charming.api(manifest.id).<op>(input)`, which resolves to the value directly and throws on failure.
 - `env.storage` is Workers KV with only `.get(key)`, `.put(key, value)`, `.delete(key)`, and `.list()`. It stores JSON-compatible values directly: never `JSON.stringify` before `put` or `JSON.parse` after `get`.
-- Subscribe with `window.charming.onStateChange(cb)` so the UI updates when the agent runs the app's operations from another session. Apply surgical updates such as `textContent` rather than replacing `innerHTML`, so the user's focus, selection, and typing survive.
+- Subscribe with `window.charming.onStateChange(() => refresh())`, where `refresh` refetches the app's read operation. It fires after every write from any caller (this tab, another browser, an agent, a Routine, a webhook) and after a reconnect, so never poll with `setInterval` or a `setTimeout` loop. Apply surgical updates such as `textContent` rather than replacing `innerHTML`, so the user's focus, selection, and typing survive.
 - `window.charming` also carries what a shared or embedded app needs: `viewer.role` and `viewer.can(op)` to render only what this visitor may do, `user` for the caller's public identity, `login()` to trigger sign-in, `assets` and `images` for files and pictures, plus `openLink`, `sendFollowUp`, `updateContext`, `recordAction`, and `isConnected` / `onConnectionChange`. Neither `viewer` nor `user` is an enforcement boundary; the server gates are.
 - To show an external image inside a Claude or ChatGPT embed, use `window.charming.images.load(url)`, which returns a `data:` URL. Both hosts inject a CSP that blocks a cross-origin `images.proxy(url)` URL.
 - Do not manage tokens in UI code; credentials attach automatically.
@@ -118,14 +118,9 @@ document.getElementById('b').onclick = async () => {
   const { count } = await api.increment({});
   display.textContent = count;
 };
-// e is { kind: 'state-changed', op, source: 'agent' | 'reconnect-resync', ts, result }.
-// onStateChange returns an unsubscribe function.
+// increment returns the full state, so a write event carries it in e.result.
+// A reconnect-resync event has no result; refetch through a read route then.
 window.charming.onStateChange((e) => {
-  if (e.source === 'reconnect-resync') {
-    // The connection was idle too long for the server to say what was missed.
-    // Refetch through a read route, or no-op until the next agent action.
-    return;
-  }
   if (e.result && typeof e.result === 'object' && 'count' in e.result) {
     display.textContent = String(e.result.count);
   }
