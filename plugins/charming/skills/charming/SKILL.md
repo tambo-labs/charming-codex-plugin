@@ -80,7 +80,7 @@ Legacy `export default { fetch(request, env, ctx) }` still works, and on a canon
 ```js
 // module
 export const manifest = {
-  $schema: 'https://charm.ing/schema/app-manifest/2026-07-31.json',
+  $schema: 'https://charm.ing/schema/app-manifest/2026-10-16.json',
   id: 'counter',
   meta: { name: 'Counter', icon: { emoji: '➕', bg: '#1f6e68' } },
   capabilities: { imports: ['charming:storage/kv@1.0'] },
