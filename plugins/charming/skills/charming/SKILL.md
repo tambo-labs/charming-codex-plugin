@@ -121,7 +121,8 @@ document.getElementById('b').onclick = async () => {
   display.textContent = count;
 };
 // increment returns the full state, so a write event carries it in e.result.
-// A reconnect-resync event has no result; refetch through a read route then.
+// A reconnect-resync event, and every event a reader who is not a member
+// able to run the App receives, has no result; refetch through a read route then.
 window.charming.onStateChange((e) => {
   if (e.result && typeof e.result === 'object' && 'count' in e.result) {
     display.textContent = String(e.result.count);
